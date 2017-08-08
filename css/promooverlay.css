@@ -1,0 +1,48 @@
+.promooverlay {
+  background: #ffffff;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.promooverlay--isoverlay {
+  display: none;
+}
+
+.promooverlay--isoverlay.promooverlay--active {
+  display: block;
+}
+
+#promooverlay-backgroundplayer {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.promooverlay__fullscreen-video {
+  background: #000000;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.promooverlay__fullscreen-video.active,
+.promooverlay__fullscreen-video.active #promooverlay-fullscreenplayer {
+  z-index: 500;
+}
+
+#promooverlay-fullscreenplayer {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}

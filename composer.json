@@ -1,0 +1,23 @@
+{
+  "name": "nzta/promo-overlay",
+  "description": "A module for creating promotion pages",
+  "type": "silverstripe-module",
+  "homepage": "https://github.com/NZTA/promo-overlay",
+  "keywords": [
+    "silverstripe",
+    "promotion",
+    "campaign",
+    "cms"
+  ],
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/NZTA/promo-overlay/issues"
+  },
+  "require": {
+    "silverstripe/framework": "~3.4",
+    "silverstripe/cms": "~3.4"
+  },
+  "require-dev": {
+    "phpunit/PHPUnit": "~3.7"
+  }
+}

@@ -1,0 +1,6 @@
+---
+name: 'promo-overlay'
+---
+Page_Controller:
+  extensions:
+    - PromoPageControllerExtension
