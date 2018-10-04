@@ -1,5 +1,11 @@
 <?php
 
+namespace NZTA\PromoOverlay\Models;
+
+use SilverStripe\ORM\DataObject;
+use NZTA\PromoOverlay\PageTypes\PromoPage;
+use SilverStripe\Forms\RequiredFields;
+
 class PromoSlide extends DataObject
 {
 
@@ -18,7 +24,7 @@ class PromoSlide extends DataObject
      * @var array
      */
     private static $has_one = [
-        'PromoPage' => 'PromoPage'
+        'PromoPage' => PromoPage::class,
     ];
 
     /**

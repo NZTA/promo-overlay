@@ -1,5 +1,11 @@
 <?php
 
+namespace NZTA\PromoOverlay\Validators;
+
+use SilverStripe\Forms;
+use SilverStripe\Core\Convert;
+use NZTA\PromoOverlay\PageTypes\PromoPage;
+
 class PromoPageValidator extends RequiredFields
 {
 

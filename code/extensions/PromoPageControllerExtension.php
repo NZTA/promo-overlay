@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\ORM\DataExtension;
+use NZTA\PromoOverlay\PageTypes\PromoPage;
+
 class PromoPageControllerExtension extends DataExtension
 {
 
