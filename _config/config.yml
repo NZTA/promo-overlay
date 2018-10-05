@@ -1,6 +1,6 @@
 ---
 name: 'promo-overlay'
 ---
-CWP\CWP\PageTypes\BasePageController\PageController:
+PageController:
   extensions:
-    - PromoPageControllerExtension
+    - NZTA\PromoOverlay\Extensions\PromoPageControllerExtension

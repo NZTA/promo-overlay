@@ -7,6 +7,7 @@ use SilverStripe\Forms\CheckboxField;
 use NZTA\PromoOverlay\Models\PromoSlide;
 use SilverStripe\Forms\GridField\GridField;
 use NZTA\PromoOverlay\Validators\PromoPageValidator;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
 class PromoPage extends Page
@@ -52,7 +53,7 @@ class PromoPage extends Page
                 'Promo Slides',
                 $this->PromoSlides()->sort('SortOrder'),
                 GridFieldConfig_RecordEditor::create()
-                    ->addComponent(new GridFieldSortableRows('SortOrder'))
+                    ->addComponent(new GridFieldOrderableRows('SortOrder'))
             )
         );
 
