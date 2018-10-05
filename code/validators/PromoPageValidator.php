@@ -4,6 +4,7 @@ namespace NZTA\PromoOverlay\Validators;
 
 use SilverStripe\Forms;
 use SilverStripe\Core\Convert;
+use SilverStripe\Forms\RequiredFields;
 use NZTA\PromoOverlay\PageTypes\PromoPage;
 
 class PromoPageValidator extends RequiredFields
