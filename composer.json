@@ -1,7 +1,7 @@
 {
   "name": "nzta/promo-overlay",
   "description": "A module for creating promotion pages",
-  "type": "silverstripe-module",
+  "type": "silverstripe-vendormodule",
   "homepage": "https://github.com/NZTA/promo-overlay",
   "keywords": [
     "silverstripe",
@@ -19,5 +19,13 @@
   },
   "require-dev": {
     "phpunit/PHPUnit": "^5.7"
-  }
+  },
+  "extra": {
+      "expose": [
+          "css",
+          "javascript"
+      ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
