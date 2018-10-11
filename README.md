@@ -20,13 +20,9 @@ will not re-open until session has been reset
 
 ## Setup
 
-1. You will need to include the `PromoOverlay` template into your page.
-2. You will then need to add the `JSAppData` to the `<head>` of your templates.
-3. You will then need to include the `promooverlay.js` and `overlayvideo.js` javascript
-files into your templates, either through `Requirements` or just adding them into 
-your page templates directly.
-4. You will then need to include the provided `promooverlay.css` and add some basic custom 
-styles to make the overlays appear nicely.
+1. You will need to include the `<% include PromoOverlay IsOverlay=true,PromoSlides=$ActivePromoSlides %>` template into your page.
+2. You will then need to add the `<% include JSAppData %>` to the `<head>` of your templates.
+3. Add some basic custom styles to make the overlays appear nicely.
 
 ## Usage
 
