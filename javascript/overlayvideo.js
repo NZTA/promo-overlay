@@ -48,9 +48,7 @@
         },
         events: {
           'onReady': 'onPlayerReady'
-        },
-        host: 'https://www.youtube.com',
-        origin: 'https://www.youtube.com'
+        }
       });
     };
 
@@ -90,9 +88,7 @@
           loop: 0,
           rel: 0,
           showinfo: 0
-        },
-        host: 'https://www.youtube.com',
-        origin: 'https://www.youtube.com'
+        }
       });
 
       // bring fullscreen video to the foreground
