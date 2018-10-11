@@ -21,7 +21,7 @@ will not re-open until session has been reset
 ## Setup
 
 1. You will need to include the `<% include PromoOverlay IsOverlay=true,PromoSlides=$ActivePromoSlides %>` template into your page.
-2. You will then need to add the `JSAppData` to the `<head>` of your templates.
+2. You will then need to add the `<% include JSAppData %>` to the `<head>` of your templates.
 3. Add some basic custom styles to make the overlays appear nicely.
 
 ## Usage
