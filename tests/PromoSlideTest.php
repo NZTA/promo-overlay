@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\Dev\SapphireTest;
+use NZTA\PromoOverlay\Models\PromoSlide;
+
 class PromoSlideTest extends SapphireTest
 {
 
