@@ -10,7 +10,7 @@
             </div>
             <% loop $PromoSlides %>
                 <div class="promooverlay__slide<% if $BackgroundVideo %> promooverlay__slide--video<% end_if %><% if $First %> promooverlay__slide--active<% end_if %>"<% if $BackgroundVideo %> data-video="$BackgroundVideoID"<% end_if %>>
-                    <% if $IsOverlay %>
+                    <% if $Up.IsOverlay %>
                         <a href="#" class="promooverlay__close" data-promo-overlay-close>
                             Close
                         </a>

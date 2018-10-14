@@ -1,6 +1,10 @@
 ---
 name: 'promo-overlay'
 ---
-Page_Controller:
+Page:
   extensions:
-    - PromoPageControllerExtension
+    - NZTA\PromoOverlay\Extensions\PromoPageExtension
+
+PageController:
+  extensions:
+    - NZTA\PromoOverlay\Extensions\PromoPageControllerExtension
