@@ -1,5 +1,13 @@
 # Promo Overlay
 
+## Requirements
+SilverStripe 4.x
+
+## Version info
+The master branch of this module is currently aiming for SilverStripe 4.x compatibility
+
+* [SilverStripe 3.0+ compatible version](https://github.com/NZTA/promo-overlay/tree/1.0.1)
+
 ## Features
 
 * Provides a Promo page type where Promo slides can be created

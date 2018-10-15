@@ -18,6 +18,21 @@ class PromoPage extends Page
     private static $description = 'Used to display a promo campaign on the website';
 
     /**
+     * @var string
+     */
+    private static $singular_name = 'Promo Page';
+
+    /**
+     * @var string
+     */
+    private static $plural_name = 'Promo Pages';
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'PromoPage';
+
+    /**
      * @var array
      */
     private static $db = [

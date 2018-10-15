@@ -10,6 +10,20 @@ class PromoSlide extends DataObject
 {
 
     /**
+     * @var string
+     */
+    private static $singular_name = 'Promo Slide';
+
+    /**
+     * @var string
+     */
+    private static $plural_name = 'Promo Slides';
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'PromoSlide';
+    /**
      * @var array
      */
     private static $db = [
