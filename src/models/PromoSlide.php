@@ -117,6 +117,10 @@ class PromoSlide extends DataObject
      */
     private function getVideoID($url)
     {
+        if (!$url) {
+            return '';
+        }
+
         preg_match(
             "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/",
             $url,
