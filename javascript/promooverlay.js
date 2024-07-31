@@ -1,12 +1,12 @@
-'use strict';
+(() => {
 
-(function () {
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var showOverlay = window.__promoData !== void 0 && window.__promoData.showOverlay !== void 0 ? window.__promoData.showOverlay : null;
-    var overlay = document.querySelector('[data-promo-overlay]');
-    var closeButton = overlay ? overlay.querySelector('[data-promo-overlay-close]') : null;
-    var closedKey = 'promoOverlayClosed';
+  document.addEventListener('DOMContentLoaded', () => {
+    let showOverlay = (window.__promoData !== void 0 && window.__promoData.showOverlay !== void 0)
+      ? window.__promoData.showOverlay
+      : null;
+    let overlay = document.querySelector('[data-promo-overlay]');
+    let closeButton = overlay ? overlay.querySelector('[data-promo-overlay-close]') : null;
+    let closedKey = 'promoOverlayClosed';
 
     // ensure we have the overlay and close button available
     if (!showOverlay || !overlay || !closeButton) {
@@ -18,10 +18,10 @@
      *
      * @return {void}
      */
-    var toggleOverlay = function toggleOverlay() {
+    let toggleOverlay = () => {
       // add active state to overlay
       overlay.classList.toggle('promooverlay--active');
-    };
+    }
 
     /**
      * Helper to close the overlay and store event to sessionStorage so it does
@@ -29,11 +29,11 @@
      *
      * @return {void}
      */
-    var closeOverlay = function closeOverlay() {
+    let closeOverlay = () => {
       toggleOverlay();
 
       window.sessionStorage.setItem(closedKey, 'true');
-    };
+    }
 
     // show initial overlay as long as it hasn't been closed previously in session
     if (window.sessionStorage.getItem(closedKey) !== 'true') {
@@ -41,10 +41,11 @@
     }
 
     // add ability to close overlay when close button clicked
-    closeButton.addEventListener('click', function (e) {
+    closeButton.addEventListener('click', (e) => {
       e.preventDefault();
 
       closeOverlay();
     });
   });
+
 })();

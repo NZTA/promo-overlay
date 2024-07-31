@@ -2,13 +2,13 @@
 
 namespace NZTA\PromoOverlay\PageTypes;
 
+use NZTA\PromoOverlay\Models\PromoSlide;
+use NZTA\PromoOverlay\Validators\PromoPageValidator;
 use Page;
 use SilverStripe\Forms\CheckboxField;
-use NZTA\PromoOverlay\Models\PromoSlide;
 use SilverStripe\Forms\GridField\GridField;
-use NZTA\PromoOverlay\Validators\PromoPageValidator;
-use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class PromoPage extends Page
 {
@@ -56,7 +56,7 @@ class PromoPage extends Page
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                CheckboxField::create('IsActive', 'Active Promo page')
+                CheckboxField::create('IsActive', 'Active Promo page'),
             ],
             'Content'
         );
@@ -82,5 +82,4 @@ class PromoPage extends Page
     {
         return new PromoPageValidator();
     }
-
 }

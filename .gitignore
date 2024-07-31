@@ -1,1 +1,12 @@
 .idea
+.phpunit.result.cache
+.graphql-generated
+_graphql
+app
+node_modules
+public
+silverstripe-cache
+vendor
+composer.lock
+package-lock.json
+yarn.lock

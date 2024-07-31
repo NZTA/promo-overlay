@@ -8,7 +8,7 @@ use SilverStripe\View\Requirements;
 class PromoPageExtension extends DataExtension
 {
     /**
-     * Extension funciton
+     * Extension function
      *
      * @return void
      */

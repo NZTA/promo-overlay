@@ -2,13 +2,12 @@
 
 namespace NZTA\PromoOverlay\Models;
 
-use SilverStripe\ORM\DataObject;
 use NZTA\PromoOverlay\PageTypes\PromoPage;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\ORM\DataObject;
 
 class PromoSlide extends DataObject
 {
-
     /**
      * @var string
      */
@@ -31,7 +30,7 @@ class PromoSlide extends DataObject
         'Content' => 'HTMLText',
         'SortOrder' => 'Int',
         'BackgroundVideo' => 'Varchar(255)',
-        'FullScreenVideo' => 'Varchar(255)'
+        'FullScreenVideo' => 'Varchar(255)',
     ];
 
     /**
@@ -45,7 +44,7 @@ class PromoSlide extends DataObject
      * @var array
      */
     private static $default_sort = [
-        'SortOrder' => 'ASC'
+        'SortOrder' => 'ASC',
     ];
 
     /**
@@ -82,7 +81,7 @@ class PromoSlide extends DataObject
     {
         return new RequiredFields([
             'Title',
-            'Content'
+            'Content',
         ]);
     }
 

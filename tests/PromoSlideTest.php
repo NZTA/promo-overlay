@@ -1,64 +1,54 @@
 <?php
 
-use SilverStripe\Dev\SapphireTest;
+namespace NZTA\PromoOverlay\Test;
+
 use NZTA\PromoOverlay\Models\PromoSlide;
+use SilverStripe\Dev\SapphireTest;
 
 class PromoSlideTest extends SapphireTest
 {
-
-    /**
-     * @var boolean
-     */
-    protected $usesDatabase = true;
-
     /**
      * List of youtube url variations to test video ID extraction.
      *
      * @var array
      */
-    protected $videoUrlList = [
-        'youtube.com/v/123',
-        'youtube.com/vi/123',
-        'youtube.com/?v=123',
-        'youtube.com/?vi=123',
-        'youtube.com/watch?v=123',
-        'youtube.com/watch?vi=123',
-        'youtu.be/123',
-        'youtube.com/embed/123',
-        'http://youtube.com/v/123',
-        'http://www.youtube.com/v/123',
-        'https://www.youtube.com/v/123',
-        'youtube.com/watch?v=123&wtv=wtv',
-        'http://www.youtube.com/watch?dev=inprogress&v=123&feature=related',
-        'https://m.youtube.com/watch?v=123'
-    ];
-
-    public function testGetBackgroundVideoID()
+    public function videoUrlList()
     {
-        $slide = new PromoSlide();
-        $slide->Title = 'Test slide';
-        $slide->write();
-
-        foreach ($this->videoUrlList as $url) {
-            $slide->BackgroundVideo = $url;
-            $slide->write();
-
-            $this->assertEquals('123', $slide->getBackgroundVideoID());
-        }
+        return [
+            ['youtube.com/v/123', '123'],
+            ['youtube.com/vi/456', '456'],
+            ['youtube.com/?v=789', '789'],
+            ['youtube.com/?vi=321', '321'],
+            ['youtube.com/watch?v=654', '654'],
+            ['youtube.com/watch?vi=987', '987'],
+            ['youtu.be/147', '147'],
+            ['youtube.com/embed/258', '258'],
+            ['http://youtube.com/v/369', '369'],
+            ['http://www.youtube.com/v/741', '741'],
+            ['https://www.youtube.com/v/852', '852'],
+            ['youtube.com/watch?v=963&wtv=wtv', '963'],
+            ['http://www.youtube.com/watch?dev=inprogress&v=159&feature=related', '159'],
+            ['https://m.youtube.com/watch?v=357', '357'],
+        ];
     }
 
-    public function testGetFullScreenVideoID()
+    /**
+     * @dataProvider videoUrlList
+     */
+    public function testGetBackgroundVideoID($videoUrl, $expectedId)
     {
         $slide = new PromoSlide();
-        $slide->Title = 'Test slide';
-        $slide->write();
-
-        foreach ($this->videoUrlList as $url) {
-            $slide->FullScreenVideo = $url;
-            $slide->write();
-
-            $this->assertEquals('123', $slide->getFullScreenVideoID());
-        }
+        $slide->BackgroundVideo = $videoUrl;
+        $this->assertSame($expectedId, $slide->getBackgroundVideoID());
     }
 
+    /**
+     * @dataProvider videoUrlList
+     */
+    public function testGetFullScreenVideoID($videoUrl, $expectedId)
+    {
+        $slide = new PromoSlide();
+        $slide->FullScreenVideo = $videoUrl;
+        $this->assertSame($expectedId, $slide->getFullScreenVideoID());
+    }
 }

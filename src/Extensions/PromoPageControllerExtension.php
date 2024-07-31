@@ -2,13 +2,12 @@
 
 namespace NZTA\PromoOverlay\Extensions;
 
-use SilverStripe\ORM\DataExtension;
 use NZTA\PromoOverlay\PageTypes\PromoPage;
+use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\HasManyList;
 
 class PromoPageControllerExtension extends DataExtension
 {
-
     /**
      * Find the active {@link PromoPage} and get the {@link PromoSlide}s
      * attached to the page.
@@ -42,7 +41,7 @@ class PromoPageControllerExtension extends DataExtension
             foreach ($slides as $slide) {
                 $data[] = [
                     'Title' => $slide->Title,
-                    'Content' => $slide->dbObject('Content')->forTemplate()
+                    'Content' => $slide->dbObject('Content')->forTemplate(),
                 ];
             }
         }
@@ -73,10 +72,9 @@ class PromoPageControllerExtension extends DataExtension
     {
         $data = [
             'slideData' => $this->getActivePromoSlideData(),
-            'showOverlay' => $this->getShouldDisplayOverlay()
+            'showOverlay' => $this->getShouldDisplayOverlay(),
         ];
 
         return json_encode($data);
     }
-
 }

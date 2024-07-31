@@ -1,14 +1,12 @@
-'use strict';
+(() => {
 
-(function () {
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var apiScript = document.createElement('script');
+  document.addEventListener('DOMContentLoaded', () => {
+    let apiScript = document.createElement('script');
 
     // create script tag to load in youtube api
     apiScript.src = 'https://www.youtube.com/iframe_api';
 
-    var firstScriptTag = document.getElementsByTagName('script')[0];
+    let firstScriptTag = document.getElementsByTagName('script')[0];
 
     // add youtube iframe api javascript to page
     if (firstScriptTag) {
@@ -16,9 +14,9 @@
     }
 
     // setup youtube player references so we can trigger events as required
-    var fullscreenWrapper = document.querySelector('.promooverlay__fullscreen-video');
-    var backgroundPlayer = null;
-    var fullscreenPlayer = null;
+    let fullscreenWrapper = document.querySelector('.promooverlay__fullscreen-video');
+    let backgroundPlayer = null;
+    let fullscreenPlayer = null;
 
     /**
      * Setup the currently active slide to play the background video if
@@ -26,15 +24,15 @@
      *
      * @return {void}
      */
-    var playBackgroundVideo = function playBackgroundVideo() {
-      var activeSlide = document.querySelector('.promooverlay__slide--active');
+    const playBackgroundVideo = () => {
+      let activeSlide = document.querySelector('.promooverlay__slide--active');
 
       // can stop here if no background video to play
       if (!activeSlide || !activeSlide.classList.contains('promooverlay__slide--video')) {
         return;
       }
 
-      var videoId = activeSlide.getAttribute('data-video');
+      let videoId = activeSlide.getAttribute('data-video');
       backgroundPlayer = new YT.Player('promooverlay-backgroundplayer', {
         videoId: videoId,
         playerVars: {
@@ -50,29 +48,29 @@
           'onReady': 'onPlayerReady'
         }
       });
-    };
+    }
 
     /**
      * Play the currently active slides fullscreen video if applicable.
      *
      * @return {void}
      */
-    var playFullscreenVideo = function playFullscreenVideo() {
-      var activeSlide = document.querySelector('.promooverlay__slide--active');
+    const playFullscreenVideo = () => {
+      let activeSlide = document.querySelector('.promooverlay__slide--active');
 
       // can stop here if no active slide or no fullscreen video wrapper
       if (!activeSlide || !fullscreenWrapper) {
         return;
       }
 
-      var playButton = activeSlide.querySelector('.promooverlay__slide-play');
+      let playButton = activeSlide.querySelector('.promooverlay__slide-play');
 
       // can stop here if no play button available
       if (!playButton) {
         return;
       }
 
-      var videoId = playButton.getAttribute('data-video-id');
+      let videoId = playButton.getAttribute('data-video-id');
 
       // check video id available
       if (!videoId) {
@@ -93,20 +91,20 @@
 
       // bring fullscreen video to the foreground
       fullscreenWrapper.classList.add('active');
-    };
+    }
 
     /**
      * Close the currently active fullscreen video.
      *
      * @return {void}
      */
-    var closeFullscrenVideo = function closeFullscrenVideo() {
+    const closeFullscrenVideo = () => {
       // close the fullscreen overlay
       fullscreenWrapper.classList.remove('active');
 
       // destroy the current player so it doesn't continue playing in the background
       fullscreenPlayer.destroy();
-    };
+    }
 
     /**
      * This is called when the youtube iframe api has loaded so needs to be
@@ -115,9 +113,9 @@
      *
      * @return {void}
      */
-    window.onYouTubeIframeAPIReady = function () {
+    window.onYouTubeIframeAPIReady = () => {
       playBackgroundVideo();
-    };
+    }
 
     /**
      * This is called when the background youtube player is ready to play, so
@@ -128,14 +126,14 @@
      *
      * @return {void}
      */
-    window.onPlayerReady = function (event) {
+    window.onPlayerReady = (event) => {
       event.target.mute();
-    };
+    }
 
     // setup play buttons and the fullscreen close video button events
 
-    var playButtons = document.querySelectorAll('.promooverlay__slide-play');
-    var fullscreenClose = document.querySelector('.promooverlay__close-fullscreen');
+    let playButtons = document.querySelectorAll('.promooverlay__slide-play');
+    let fullscreenClose = document.querySelector('.promooverlay__close-fullscreen');
 
     // can stop here if no play buttons to activate or close button not available to close fullscreen
     if (playButtons.length === 0 || !fullscreenClose) {
@@ -143,10 +141,10 @@
     }
 
     // setup each play button to play fullscreen video when clicked
-    for (var i = 0; i < playButtons.length; i++) {
-      var button = playButtons[i];
+    for (let i = 0; i < playButtons.length; i++) {
+      let button = playButtons[i];
 
-      button.addEventListener('click', function (e) {
+      button.addEventListener('click', (e) => {
         e.preventDefault();
 
         playFullscreenVideo();
@@ -154,10 +152,11 @@
     }
 
     // setup fullscreen close button event handler
-    fullscreenClose.addEventListener('click', function (e) {
+    fullscreenClose.addEventListener('click', (e) => {
       e.preventDefault();
 
       closeFullscrenVideo();
     });
   });
+
 })();

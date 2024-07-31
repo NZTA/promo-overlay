@@ -2,19 +2,12 @@
 
 namespace NZTA\PromoOverlay\Validators;
 
-use SilverStripe\Forms;
+use NZTA\PromoOverlay\PageTypes\PromoPage;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\RequiredFields;
-use NZTA\PromoOverlay\PageTypes\PromoPage;
 
 class PromoPageValidator extends RequiredFields
 {
-
-    /**
-     * @param array $data
-     *
-     * @return bool
-     */
     public function php($data)
     {
         $valid = parent::php($data);

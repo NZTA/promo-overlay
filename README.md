@@ -1,20 +1,15 @@
 # Promo Overlay
 
 ## Requirements
-SilverStripe 4.x
-
-## Version info
-The master branch of this module is currently aiming for SilverStripe 4.x compatibility
-
-* [SilverStripe 3.0+ compatible version](https://github.com/NZTA/promo-overlay/tree/1.0.1)
+Silverstripe CMS 5.x
 
 ## Features
 
 * Provides a Promo page type where Promo slides can be created
 * Promo slides can be a basic slide with a title and content
-* Promo slides can also be a video slide with a background video and fullscreen 
+* Promo slides can also be a video slide with a background video and fullscreen
 video pop up
-* Ability for Promo page to appear as an overlay on initial visit, and when closed 
+* Ability for Promo page to appear as an overlay on initial visit, and when closed
 will not re-open until session has been reset
 
 ## Upcoming features
