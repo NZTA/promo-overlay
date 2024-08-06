@@ -29,7 +29,11 @@
   },
   "autoload": {
     "psr-4": {
-      "NZTA\\PromoOverlay\\": "src/",
+      "NZTA\\PromoOverlay\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
       "NZTA\\PromoOverlay\\Test\\": "tests/"
     }
   },
