@@ -6,25 +6,23 @@ use NZTA\PromoOverlay\PageTypes\PromoPage;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\DataObject;
 
+/**
+ * @property string $Title
+ * @property string $Content
+ * @property int $SortOrder
+ * @property string $BackgroundVideo
+ * @property string $FullScreenVideo
+ * @property int $PromoPageID
+ * @method PromoPage PromoPage()
+ */
 class PromoSlide extends DataObject
 {
-    /**
-     * @var string
-     */
     private static $singular_name = 'Promo Slide';
 
-    /**
-     * @var string
-     */
     private static $plural_name = 'Promo Slides';
 
-    /**
-     * @var string
-     */
     private static $table_name = 'PromoSlide';
-    /**
-     * @var array
-     */
+
     private static $db = [
         'Title' => 'Varchar(100)',
         'Content' => 'HTMLText',
@@ -33,23 +31,14 @@ class PromoSlide extends DataObject
         'FullScreenVideo' => 'Varchar(255)',
     ];
 
-    /**
-     * @var array
-     */
     private static $has_one = [
         'PromoPage' => PromoPage::class,
     ];
 
-    /**
-     * @var array
-     */
     private static $default_sort = [
         'SortOrder' => 'ASC',
     ];
 
-    /**
-     * @return FieldList
-     */
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -74,12 +63,9 @@ class PromoSlide extends DataObject
         return $fields;
     }
 
-    /**
-     * @return \RequiredFields
-     */
     public function getCMSValidator()
     {
-        return new RequiredFields([
+        return RequiredFields::create([
             'Title',
             'Content',
         ]);

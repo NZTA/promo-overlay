@@ -2,6 +2,7 @@
 
 namespace NZTA\PromoOverlay\Extensions;
 
+use NZTA\PromoOverlay\Models\PromoSlide;
 use NZTA\PromoOverlay\PageTypes\PromoPage;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\HasManyList;
@@ -9,25 +10,17 @@ use SilverStripe\ORM\HasManyList;
 class PromoPageControllerExtension extends DataExtension
 {
     /**
-     * Find the active {@link PromoPage} and get the {@link PromoSlide}s
-     * attached to the page.
+     * Find the active {@link PromoPage} and get the {@link PromoSlide}s attached to the page.
      *
-     * @return HasManyList|null
+     * @return HasManyList<PromoSlide>|null
      */
     public function getActivePromoSlides()
     {
-        $page = PromoPage::get()->filter('IsActive', true)->first();
-
-        if ($page) {
-            return $page->PromoSlides();
-        }
-
-        return null;
+        return PromoPage::get()->filter('IsActive', true)->first()?->PromoSlides();
     }
 
     /**
-     * Find the active {@link PromoPage} and get the slide data for the
-     * front end.
+     * Find the active {@link PromoPage} and get the slide data for the front end.
      *
      * @return array
      */
@@ -35,23 +28,20 @@ class PromoPageControllerExtension extends DataExtension
     {
         $data = [];
 
-        $slides = $this->getActivePromoSlides();
+        $slides = $this->getActivePromoSlides() ?? [];
 
-        if ($slides && $slides->count()) {
-            foreach ($slides as $slide) {
-                $data[] = [
-                    'Title' => $slide->Title,
-                    'Content' => $slide->dbObject('Content')->forTemplate(),
-                ];
-            }
+        foreach ($slides as $slide) {
+            $data[] = [
+                'Title' => $slide->Title,
+                'Content' => $slide->dbObject('Content')->forTemplate(),
+            ];
         }
 
         return $data;
     }
 
     /**
-     * Helper to determine whether the promo overlay should display on initial
-     * visit.
+     * Helper to determine whether the promo overlay should display on initial visit.
      *
      * @return int
      */
@@ -63,8 +53,7 @@ class PromoPageControllerExtension extends DataExtension
     }
 
     /**
-     * Helper to get promo page data as JSON so javascript can access the data
-     * to generate the overlay if needed.
+     * Helper to get promo page data as JSON so javascript can access the data to generate the overlay if needed.
      *
      * @return string
      */

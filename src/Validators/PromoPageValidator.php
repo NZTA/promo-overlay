@@ -11,14 +11,14 @@ class PromoPageValidator extends RequiredFields
     public function php($data)
     {
         $valid = parent::php($data);
-        if (Convert::raw2sql($data['IsActive']) == 1) {
+        if (intval($data['IsActive']) === 1) {
             $promoPageCount = PromoPage::get()
                 ->filter('IsActive', true)
                 ->exclude('ID', $data['ID'])
                 ->count();
 
             if ($promoPageCount > 0) {
-                $this->validationError('IsActive', 'Sorry, You can have only one active promo page.', 'validation');
+                $this->validationError('IsActive', 'Sorry, You can have only one active promo page.');
                 $valid = false;
             }
         }

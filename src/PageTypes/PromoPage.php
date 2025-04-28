@@ -10,45 +10,28 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
+/**
+ * @property bool $IsActive
+ * @method \SilverStripe\ORM\HasManyList<PromoSlide> PromoSlides()
+ */
 class PromoPage extends Page
 {
-    /**
-     * @var string
-     */
     private static $description = 'Used to display a promo campaign on the website';
 
-    /**
-     * @var string
-     */
     private static $singular_name = 'Promo Page';
 
-    /**
-     * @var string
-     */
     private static $plural_name = 'Promo Pages';
 
-    /**
-     * @var string
-     */
     private static $table_name = 'PromoPage';
 
-    /**
-     * @var array
-     */
     private static $db = [
         'IsActive' => 'Boolean',
     ];
 
-    /**
-     * @var array
-     */
     private static $has_many = [
         'PromoSlides' => PromoSlide::class,
     ];
 
-    /**
-     * @return FieldList
-     */
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -75,11 +58,8 @@ class PromoPage extends Page
         return $fields;
     }
 
-    /**
-     * @return PromoPageValidator
-     */
     public function getCMSValidator()
     {
-        return new PromoPageValidator();
+        return PromoPageValidator::create();
     }
 }
